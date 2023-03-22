@@ -2,6 +2,11 @@
 
 Excelの表をAWS DynamoDBにインサートするためのjsonファイルに変換するスクリプトです
 
+# Excelの形式
+
+1シート目に表を作成してください
+また、1行目には列名を記載してください
+
 # 注意事項
 
 パーティションキーがidという列名でかつ型がstring型という前提になっています。
@@ -18,16 +23,16 @@ pip3 install pandas
 
 ## 実行方法
 
-1度に25件までしか一括挿入できないため、25レコード以上ある場合はファイルが分割されます
+1度に25件までしか一括挿入できないため、25レコード以上ある場合はファイルが分割されます。
 
 ```
 $ python convert_excel_to_dynamodb_batchwriteitem.py [Inser先のDynamoDBテーブル名] [Excelファイル名]
 ```
 
-ex.
+ex.(ルートディレクトリにある `example.xlsx` に `exampleTable` というテーブルに挿入したいデータを表形式で記載している前提
 
 ```
-$ python3 convert_excel_to_dynamodb_batchwriteitem.py adminSettings example.xlsx
+$ python3 convert_excel_to_dynamodb_batchwriteitem.py exampleTable example.xlsx
 
 # output_0.json〜output_2.jsonが成果物
 $ ls
