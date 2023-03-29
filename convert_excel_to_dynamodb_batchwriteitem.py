@@ -21,7 +21,11 @@ for record in records:
             item[key] = {"NULL": True}
         elif key == 'id': # 'id'キーの場合、型をstringに変更
             item[key] = {"S": str(value)}
+        elif isinstance(value, bool): # Boolean型の場合、型をboolに変更
+            item[key] = {"BOOL": value}
         elif isinstance(value, int):
+            item[key] = {"N": str(value)}
+        elif isinstance(value, float): # 小数を含む列の場合、型を数値に変更
             item[key] = {"N": str(value)}
         else:
             item[key] = {"S": str(value)}

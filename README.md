@@ -12,6 +12,12 @@ Excelの表をAWS DynamoDBにインサートするためのjsonファイルに�
 パーティションキーがidという列名でかつ型がstring型という前提になっています。
 適宜変更をお願いします。
 
+対応している型は以下の通り
+
+- number
+- string
+- boolean
+
 # インストール
 
 python, pip
