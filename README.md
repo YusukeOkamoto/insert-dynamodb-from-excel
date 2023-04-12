@@ -17,6 +17,9 @@ Excelの表をAWS DynamoDBにインサートするためのjsonファイルに�
 - number
 - string
 - boolean
+- List<string>
+
+配列にしたい場合は、一つのセルに `要素1, 要素2` のようにカンマ区切りで入力してください
 
 # インストール
 
