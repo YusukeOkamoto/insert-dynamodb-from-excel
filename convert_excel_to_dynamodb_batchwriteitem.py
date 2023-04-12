@@ -27,6 +27,8 @@ for record in records:
             item[key] = {"N": str(value)}
         elif isinstance(value, float): # 小数を含む列の場合、型を数値に変更
             item[key] = {"N": str(value)}
+        elif isinstance(value, str) and "," in value: # カンマ区切りの文字列の場合、型をLに変更
+            item[key] = {"L": [{"S": x.strip()} for x in value.split(",")]}
         else:
             item[key] = {"S": str(value)}
     request_items.append({"PutRequest": {"Item": item}})
